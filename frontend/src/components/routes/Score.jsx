@@ -36,14 +36,22 @@ const Score = () => {
     else{
       try {
         const result = await scoreService.checkScore(run, dv)
-
-        setRun('')
-        setDv('')
         setResult(result)
+
+        if(result===null){
+          dispatch(errorNotificationChange('User not found'))
+          setTimeout(() => {
+            dispatch(errorNotificationReset())
+          }, 5000)
+        }
+        else{
+          setRun('')
+          setDv('')
+        }
 
       } catch (exception) {
         setResult(null)
-        dispatch(errorNotificationChange('User does not exist'))
+        dispatch(errorNotificationChange('User not found'))
         setTimeout(() => {
           dispatch(errorNotificationReset())
         }, 5000)

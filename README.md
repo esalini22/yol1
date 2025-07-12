@@ -38,3 +38,4 @@ Usuarios de prueba disponibles:
 Limitaciones: los datos están hardcodeados en un JSON, no hay funcionalidades para editar o ingresar datos a este. 
 Por falta de tiempo, no se realizó alguna funcionalidad de testing o logging.
 Por falta de tiempo, se revisa el rol al momento de consultar un Rut desde el frontend, no el backend, con su respectivo manejo de errores.
+Por simplicidad, no se hace hashing de las contraseñas.

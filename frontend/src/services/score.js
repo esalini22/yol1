@@ -5,7 +5,8 @@ const config = {
 }
 
 const checkScore = async (run, dv) => {
-  const response = await axios.get(`/api/score/${run}/${dv}`, config)
+  const rut = run+"-"+dv
+  const response = await axios.get(`/api/score/${rut}`, config)
   return response.data
 }
 

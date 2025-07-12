@@ -2,11 +2,14 @@ const scoreRouter = require('express').Router()
 const User = require('../models/user')
 const crypto = require('crypto')
 
-scoreRouter.get('/:run/:dv', async (request, response) => {
-  const { run, dv } = request.params
+scoreRouter.get('/:rut', async (request, response) => {
+  console.log(request.params.rut)
+  const [ run, dv ] = request.params.rut.split('-')
+  console.log(run)
+  console.log(dv)
 
   try {
-    const user = await User.findByRut({ run: request.params.run, dv: request.params.dv })
+    const user = await User.findByRut({ run: run, dv: dv })
 
     if (user) {
         const hash = crypto.createHash('sha256').update(user.run).digest('hex')
