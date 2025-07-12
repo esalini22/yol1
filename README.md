@@ -25,8 +25,6 @@ PORT=<your desired port>
 SECRET=secret
 ```
 
-La API no puede utilizarse desde Postman, ya que está bloqueada para utilizarse SOLO a través de navegadores.
-
 Usuarios de prueba disponibles:
 
 - admin@yol1.com (password: password123)
@@ -35,7 +33,14 @@ Usuarios de prueba disponibles:
 
 - user2@yol1.com (password: password123, rut: 98765432-1)
 
-Limitaciones: los datos están hardcodeados en un JSON, no hay funcionalidades para editar o ingresar datos a este. 
-Por falta de tiempo, no se realizó alguna funcionalidad de testing o logging.
-Por falta de tiempo, se revisa el rol al momento de consultar un Rut desde el frontend, no el backend, con su respectivo manejo de errores.
-Por simplicidad, no se hace hashing de las contraseñas.
+Limitaciones y decisiones: 
+
+- La API no puede utilizarse desde Postman, ya que está bloqueada para utilizarse SOLO a través de navegadores. Esto es una feature incluida en el repositorio movieapp, la cual no se eliminó para no consumir tiempo cambiando la funcionalidad.
+
+- Los datos están hardcodeados en un JSON, no hay funcionalidades para editar o ingresar datos a este. Esto ya que solo se pretende probar el cálculo del score.
+
+- Por falta de tiempo, no se realizó alguna funcionalidad de testing o logging.
+
+- Por falta de tiempo, se revisa el rol al momento de consultar un Rut desde el frontend, no el backend, con su respectivo manejo de errores. Se revisa si el rut ingresado corresponde al rut del usuario actual, en caso de que su rol no sea admin.
+
+- Por simplicidad, no se hace hashing de las contraseñas. Esto ya que se está probando solo la funcionalidad de login, y no la seguridad de los datos
