@@ -29,9 +29,11 @@ La API no puede utilizarse desde Postman, ya que está bloqueada para utilizarse
 
 Usuarios de prueba disponibles:
 
-admin@yol1.com (password: password123)
-user@yol1.com (password: password123, rut: 12345678-9)
-user2@yol1.com (password: password123, rut: 98765432-1)
+- admin@yol1.com (password: password123)
+
+- user@yol1.com (password: password123, rut: 12345678-9)
+
+- user2@yol1.com (password: password123, rut: 98765432-1)
 
 Limitaciones: los datos están hardcodeados en un JSON, no hay funcionalidades para editar o ingresar datos a este. 
 Por falta de tiempo, no se realizó alguna funcionalidad de testing o logging.
