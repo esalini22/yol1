@@ -17,19 +17,37 @@ const Score = () => {
   const handleScore = async (event) => {
     event.preventDefault()
 
-    try {
-      const result = await scoreService.checkScore(run,dv)
-
-      setRun('')
-      setDv('')
-      setResult(result)
-
-    } catch (exception) {
+    if(run===null || dv===null){
       setResult(null)
-      dispatch(errorNotificationChange('User does not exist'))
+      dispatch(errorNotificationChange('Enter Rut'))
       setTimeout(() => {
         dispatch(errorNotificationReset())
       }, 5000)
+    }
+
+    else if(user.rol!=='admin' && user.run!==run && user.dv!==dv ){
+      setResult(null)
+      dispatch(errorNotificationChange('Rut inserted does not belong to current user'))
+      setTimeout(() => {
+        dispatch(errorNotificationReset())
+      }, 5000)
+    }
+
+    else{
+      try {
+        const result = await scoreService.checkScore(run, dv)
+
+        setRun('')
+        setDv('')
+        setResult(result)
+
+      } catch (exception) {
+        setResult(null)
+        dispatch(errorNotificationChange('User does not exist'))
+        setTimeout(() => {
+          dispatch(errorNotificationReset())
+        }, 5000)
+      }
     }
   }
 
@@ -49,10 +67,12 @@ const Score = () => {
         <form onSubmit={handleScore}>
           <div>
             <TextField label="run" value={run}
-              onChange={(event) => setRun(event.target.value)}/>
+              inputProps={{ maxLength: 8 }}
+              onChange={(event) => setRun(event.target.value.replace(/\D/g, ''))}/>
           </div>
           <div>
             <TextField label="dv" type='password' value={dv}
+              inputProps={{ maxLength: 1 }}
               onChange={(event) => setDv(event.target.value)} />
           </div>
           <br/>

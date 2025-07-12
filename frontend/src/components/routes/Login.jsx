@@ -28,7 +28,7 @@ const Login = () => {
 
       window.localStorage.setItem('loggedMovieappUser', JSON.stringify(user))
       adminService.setToken(user.token)
-      dispatch(changeUser({ email: user.email/*, favoriteMovies: user.favoriteMovies*/ }))
+      dispatch(changeUser({ email: user.email, run: user.run, dv: user.dv, rol: user.rol }))
       setEmail('')
       setPassword('')
 

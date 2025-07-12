@@ -1,5 +1,6 @@
 Desafío Técnico para yol1
-Se usó como base el repositorio esalini22/movieapp
+Se usó como base el repositorio esalini22/movieapp, el cual está construido con React.js y Express.js
+No se utilizó una base de datos relacional, ya que se consideró demasiado compleja y costosa de implementar para el caso dado. Tampoco se utilizó una base de datos no relacional (como MongoDB), ya que también se consideró costosa de implementar. Los datos estan en un archivo db.json
 
 Written in React.js and Express.js.
 
