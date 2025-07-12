@@ -15,7 +15,7 @@ import {
 } from '@mui/material'
 import MovieCard from '../utils/MovieCard'
 
-const Movies = ({ favorites=false }) => {
+const Score = ({ favorites=false }) => {
   //console.log('favorites: '+favorites)
 
   //for responsiveness - if the browser is on mobile mode, then the cards are centered
@@ -113,4 +113,4 @@ const Movies = ({ favorites=false }) => {
   )
 }
 
-export default Movies
+export default Score

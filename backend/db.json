@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "admin@yol1.com",
+      "rol": "admin",
+      "password": "password123"
+    },
+    {
+      "id": "2",
+      "email": "user@yol1.com",
+      "rol": "user",
+      "password": "password123",
+      "run": "12345678",
+      "dv": "9"
+    }
+  ]
+}

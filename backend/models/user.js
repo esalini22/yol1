@@ -1,35 +1,28 @@
-const mongoose = require('mongoose')
+const fs = require('fs');
+const path = require('path');
 
-const userSchema = new mongoose.Schema({
-    username: {    
-        type: String,    
-        minLength: 3,
-        required: true,    
-        unique: true // this ensures the uniqueness of username  
-    },
-    passwordHash: {    
-        type: String,    
-        minLength: 3,
-        required: true
-    },
-    //favoriteMovies contiene las id de IMBd
-    favoriteMovies: [
-      {
-        type: String,
-      }
-    ]
-})
+const filePath = path.join(__dirname, '../db.json');
 
-userSchema.set('toJSON', {
-  transform: (document, returnedObject) => {
-    returnedObject.id = returnedObject._id.toString()
-    delete returnedObject._id
-    delete returnedObject.__v
-    // the passwordHash should not be revealed
-    delete returnedObject.passwordHash
+const init = () => {
+  try {
+    const data = fs.readFileSync(filePath, 'utf-8');
+    return JSON.parse(data);
+  } catch {
+    return { users: [] };
   }
-})
+};
 
-const User = mongoose.model('User', userSchema)
+const findOne = async ({ email }) => {
+  const data = init();
+  const user = data.users.find(u => u.email === email);
+  if (!user) return null;
 
-module.exports = User
+  return {
+    ...user,
+    _id: user.id
+  };
+};
+
+module.exports = {
+  findOne
+};

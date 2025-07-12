@@ -11,13 +11,9 @@ import { changeUser, resetUser } from './reducers/userReducers'
 import { changeMovieList } from './reducers/movieListReducers'
 import movieService from './services/movies'
 import adminService from './services/admin'
-import Movies from './components/routes/Movies'
-import Movie from './components/routes/Movie'
+import Score from './components/routes/Score'
 import Login from './components/routes/Login'
-import Register from './components/routes/Register'
-import Favorites from './components/routes/Favorites'
 import NotFound from './components/routes/NotFound'
-import AddMovie from './components/routes/AddMovie'
 import Navbar from './components/utils/Navbar'
 import { Container, CssBaseline } from '@mui/material'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
@@ -83,11 +79,8 @@ const App = () => {
           <Navbar handleLogout={handleLogout} mode={mode} handleToggleMode={handleToggleMode}/>
           <Routes>
             <Route path="/" element={<Movies favorites={false}/>} />
-            <Route path="/movies/:id" element={<Movie />} />
+            <Route path="/score/:rut" element={<Score />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/favorites" element={<Favorites/>} />
-            <Route path="/add" element={<AddMovie />} />
             <Route path='*' element={<NotFound />}/>
           </Routes>
         </Router>

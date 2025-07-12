@@ -3,12 +3,9 @@ const express = require('express')
 require('express-async-errors') //ya no es necesario try and catch y next(exception)
 const app = express()
 const cors = require('cors')
-const usersRouter = require('./controllers/users')
-const moviesRouter = require('./controllers/movies')
+const scoreRouter = require('./controllers/score')
 const loginRouter = require('./controllers/login')
-const adminRouter = require('./controllers/admin')
 const middleware = require('./utils/middleware')
-const logger = require('./utils/logger')
 const mongoose = require('mongoose')
 const path = require('path');
 
@@ -29,10 +26,8 @@ app.use(cors())
 app.use(express.json())
 app.use(middleware.requestLogger)
 app.use(middleware.tokenExtractor)
-app.use('/api/users', middleware.checkUserAgent, usersRouter)
-app.use('/api/movies', middleware.checkUserAgent, moviesRouter)
+app.use('/api/score', middleware.checkUserAgent, moviesRouter)
 app.use('/api/login', middleware.checkUserAgent, loginRouter)
-app.use('/api/admin', middleware.userExtractor, adminRouter)
 
 app.get('*', (_req,res) =>{
   res.sendFile(path.join(__dirname+'/dist/index.html'));
