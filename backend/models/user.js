@@ -23,6 +23,18 @@ const findOne = async ({ email }) => {
   };
 };
 
+const findById = async ({ id }) => {
+  const data = init();
+  const user = data.users.find(u => u.id === id);
+  if (!user) return null;
+
+  return {
+    ...user,
+    _id: user.id
+  };
+};
+
 module.exports = {
-  findOne
+  findOne,
+  findById
 };

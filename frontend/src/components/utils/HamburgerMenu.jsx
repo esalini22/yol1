@@ -23,13 +23,6 @@ const HamburgerMenu = (props) => {
         onClose={() => setOpenDrawer(false)}
       >
         <List>
-          <ListItem onClick={() => setOpenDrawer(false)}>
-            <ListItemText>
-              <Button variant="text" component={Link} to="/">
-                Home
-              </Button>
-            </ListItemText>
-          </ListItem>
           {user === null ? (
             <>
               <ListItem onClick={() => setOpenDrawer(false)}>
@@ -39,31 +32,24 @@ const HamburgerMenu = (props) => {
                   </Button>
                 </ListItemText>
               </ListItem>
-              <ListItem onClick={() => setOpenDrawer(false)}>
-                <ListItemText>
-                  <Button variant="text" component={Link} to="/register">
-                        Register
-                  </Button>
-                </ListItemText>
-              </ListItem>
             </>
           )
             : (
               <>
-                <ListItem onClick={() => setOpenDrawer(false)}>
-                  <Button variant="text" component={Link} to="/favorites">
-                    Favorites
-                  </Button>
-                </ListItem>
                 {user.username==='admin' ?
                   <ListItem onClick={() => setOpenDrawer(false)}>
                     <ListItemText>
                       <Button variant="text" component={Link} to="/add">
-                        Add Movies
+                        Scores
                       </Button>
                     </ListItemText>
                   </ListItem>
-                  : null}
+                  : 
+                  <ListItem onClick={() => setOpenDrawer(false)}>
+                    <Button variant="text" component={Link} to="/favorites">
+                      Score
+                    </Button>
+                  </ListItem>}
                 <ListItem onClick={() => setOpenDrawer(false)}>
                   <ListItemText>
                     <Button variant="text" onClick={props.handleLogout} component={Link} to="/">

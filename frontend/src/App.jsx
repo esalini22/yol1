@@ -78,7 +78,7 @@ const App = () => {
         <Router>
           <Navbar handleLogout={handleLogout} mode={mode} handleToggleMode={handleToggleMode}/>
           <Routes>
-            <Route path="/" element={<Movies favorites={false}/>} />
+            <Route path="/" />
             <Route path="/score/:rut" element={<Score />} />
             <Route path="/login" element={<Login />} />
             <Route path='*' element={<NotFound />}/>
