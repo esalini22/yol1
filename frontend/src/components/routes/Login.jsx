@@ -12,7 +12,7 @@ import { useNavigate, Navigate } from 'react-router-dom'
 const Login = () => {
   const dispatch = useDispatch()
   const user = useSelector(state => state.user)
-  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   const navigate = useNavigate()
@@ -22,14 +22,14 @@ const Login = () => {
 
     try {
       const user = await loginService.login({
-        username,
+        email,
         password,
       })
 
       window.localStorage.setItem('loggedMovieappUser', JSON.stringify(user))
       adminService.setToken(user.token)
-      dispatch(changeUser({ username: user.username, favoriteMovies: user.favoriteMovies }))
-      setUsername('')
+      dispatch(changeUser({ email: user.email/*, favoriteMovies: user.favoriteMovies*/ }))
+      setEmail('')
       setPassword('')
 
       navigate('/')
@@ -56,8 +56,8 @@ const Login = () => {
         <br />
         <form onSubmit={handleLogin}>
           <div>
-            <TextField label="username"
-              onChange={(event) => setUsername(event.target.value)}/>
+            <TextField label="email"
+              onChange={(event) => setEmail(event.target.value)}/>
           </div>
           <div>
             <TextField label="password" type='password'

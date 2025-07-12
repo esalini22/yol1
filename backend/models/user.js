@@ -34,7 +34,19 @@ const findById = async ({ id }) => {
   };
 };
 
+const findByRut = async ({ run, dv }) => {
+  const data = init();
+  const user = data.users.find(u => u.run === run && u.dv === dv);
+  if (!user) return null;
+
+  return {
+    ...user,
+    _id: user.id
+  };
+};
+
 module.exports = {
   findOne,
-  findById
+  findById,
+  findByRut
 };

@@ -8,8 +8,6 @@ import {
 } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { changeUser, resetUser } from './reducers/userReducers'
-import { changeMovieList } from './reducers/movieListReducers'
-import movieService from './services/movies'
 import adminService from './services/admin'
 import Score from './components/routes/Score'
 import Login from './components/routes/Login'
@@ -20,7 +18,6 @@ import { ThemeProvider, createTheme } from '@mui/material/styles'
 
 const App = () => {
   const dispatch = useDispatch()
-  const user = useSelector(state => state.user)
 
   const [mode, setMode] = useState('light')
 
@@ -33,31 +30,6 @@ const App = () => {
       }),
     [mode]
   )
-
-  useEffect(() => {
-    const mode = window.localStorage.getItem('Mode')
-    if(mode) setMode(JSON.parse(mode))
-
-    const movies = window.localStorage.getItem('MovieappList')
-    if(movies){
-      dispatch(changeMovieList(JSON.parse(movies)))
-    }
-    else{
-      movieService
-        .getResults()
-        .then((movies) => {
-          dispatch(changeMovieList(movies))
-          window.localStorage.setItem('MovieappList', JSON.stringify(movies))
-        })
-    }
-
-    const loggedUserJSON = window.localStorage.getItem('loggedMovieappUser')
-    if (loggedUserJSON && user===null) {
-      const user = JSON.parse(loggedUserJSON)
-      adminService.setToken(user.token)
-      dispatch(changeUser({ username: user.username, favoriteMovies: user.favoriteMovies }))
-    }
-  }, [])
 
   const handleLogout = async (_event) => {
     window.localStorage.removeItem('loggedMovieappUser')
@@ -79,7 +51,7 @@ const App = () => {
           <Navbar handleLogout={handleLogout} mode={mode} handleToggleMode={handleToggleMode}/>
           <Routes>
             <Route path="/" />
-            <Route path="/score/:rut" element={<Score />} />
+            <Route path="/score" element={<Score />} />
             <Route path="/login" element={<Login />} />
             <Route path='*' element={<NotFound />}/>
           </Routes>

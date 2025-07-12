@@ -35,12 +35,12 @@ const Navbar = (props) => {
               ) : (
                 <>
                   {user.username==='admin' ?
-                    <Button color="inherit" component={Link} to="/add">
-                    scores
+                    <Button color="inherit" component={Link} to="/score">
+                    consultar rut
                     </Button>
                     :
-                    <Button color="inherit" component={Link} to="/favorites">
-                    score
+                    <Button color="inherit" component={Link} to="/score">
+                    consultar rut
                     </Button>}
                   <Button color="inherit" onClick={props.handleLogout} component={Link} to="/">
                   logout

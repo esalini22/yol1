@@ -39,15 +39,15 @@ const HamburgerMenu = (props) => {
                 {user.username==='admin' ?
                   <ListItem onClick={() => setOpenDrawer(false)}>
                     <ListItemText>
-                      <Button variant="text" component={Link} to="/add">
-                        Scores
+                      <Button variant="text" component={Link} to="/score">
+                        Consultar Rut
                       </Button>
                     </ListItemText>
                   </ListItem>
                   : 
                   <ListItem onClick={() => setOpenDrawer(false)}>
-                    <Button variant="text" component={Link} to="/favorites">
-                      Score
+                    <Button variant="text" component={Link} to="/score">
+                      Consultar Rut
                     </Button>
                   </ListItem>}
                 <ListItem onClick={() => setOpenDrawer(false)}>

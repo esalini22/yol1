@@ -1,13 +1,13 @@
-Prueba Técnica para yol1
-Basado en repositorio movieapp
+Desafío Técnico para yol1
+Se usó como base el repositorio esalini22/movieapp
 
 Written in React.js and Express.js.
 
-React.js version: 18.3.1
+React.js version: 18.2.0
 
-Node.js version: v20.16.0
+Node.js version: v22.16.0
 
-Built with Vite 5.2.0
+Built with Vite 4.5.3
 
 After cloning the repository, run the command npm install inside both the backend and frontend folders.
 
