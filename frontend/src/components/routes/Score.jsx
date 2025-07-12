@@ -5,33 +5,28 @@ import scoreService from '../../services/score'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import ErrorNotification from '../utils/ErrorNotification'
-import { useNavigate, Navigate } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 
 const Score = () => {
   const dispatch = useDispatch()
   const user = useSelector(state => state.user)
   const [run, setRun] = useState('')
   const [dv, setDv] = useState('')
-  const [score, setScore] = useState(null)
+  const [result, setResult] = useState(null)
 
   const handleScore = async (event) => {
     event.preventDefault()
 
     try {
-      const result = await scoreService.checkScore({
-        run,
-        dv,
-      })
+      const result = await scoreService.checkScore(run,dv)
 
-      //window.localStorage.setItem('loggedMovieappUser', JSON.stringify(user))
-      //dispatch(changeUser({ email: user.email/*, favoriteMovies: user.favoriteMovies*/ }))
       setRun('')
       setDv('')
-      setScore(score)
+      setResult(result)
 
     } catch (exception) {
-      setScore(null)
-      dispatch(errorNotificationChange('Wrong credentials'))
+      setResult(null)
+      dispatch(errorNotificationChange('User does not exist'))
       setTimeout(() => {
         dispatch(errorNotificationReset())
       }, 5000)
@@ -53,11 +48,11 @@ const Score = () => {
         <br />
         <form onSubmit={handleScore}>
           <div>
-            <TextField label="run"
+            <TextField label="run" value={run}
               onChange={(event) => setRun(event.target.value)}/>
           </div>
           <div>
-            <TextField label="dv" type='password'
+            <TextField label="dv" type='password' value={dv}
               onChange={(event) => setDv(event.target.value)} />
           </div>
           <br/>
@@ -66,7 +61,7 @@ const Score = () => {
               consultar
             </Button>
           </div>
-          {score==null ? null : 
+          {result==null ? null : 
             <>
               <br/>
               <h2>RUT: {result.rut}</h2>

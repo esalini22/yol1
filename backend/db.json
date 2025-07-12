@@ -13,6 +13,14 @@
       "password": "password123",
       "run": "12345678",
       "dv": "9"
+    },
+    {
+      "id": "3",
+      "email": "user2@yol1.com",
+      "rol": "user",
+      "password": "password123",
+      "run": "98765432",
+      "dv": "1"
     }
   ]
 }
