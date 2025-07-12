@@ -6,9 +6,8 @@ import {
   Routes,
   Route,
 } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { changeUser, resetUser } from './reducers/userReducers'
-import adminService from './services/admin'
+import { useDispatch } from 'react-redux'
+import { resetUser } from './reducers/userReducers'
 import Score from './components/routes/Score'
 import Login from './components/routes/Login'
 import NotFound from './components/routes/NotFound'
@@ -33,7 +32,6 @@ const App = () => {
 
   const handleLogout = async (_event) => {
     window.localStorage.removeItem('loggedMovieappUser')
-    adminService.setToken(null)
     dispatch(resetUser())
   }
 

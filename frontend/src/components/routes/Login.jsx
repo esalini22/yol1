@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import adminService from '../../services/admin'
 import loginService from '../../services/login'
 import { errorNotificationChange, errorNotificationReset } from '../../reducers/errorNotificationReducers'
 import { changeUser } from '../../reducers/userReducers'
@@ -27,7 +26,6 @@ const Login = () => {
       })
 
       window.localStorage.setItem('loggedMovieappUser', JSON.stringify(user))
-      adminService.setToken(user.token)
       dispatch(changeUser({ email: user.email, run: user.run, dv: user.dv, rol: user.rol }))
       setEmail('')
       setPassword('')
