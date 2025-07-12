@@ -71,7 +71,7 @@ const Score = () => {
               onChange={(event) => setRun(event.target.value.replace(/\D/g, ''))}/>
           </div>
           <div>
-            <TextField label="dv" type='password' value={dv}
+            <TextField label="dv" value={dv}
               inputProps={{ maxLength: 1 }}
               onChange={(event) => setDv(event.target.value)} />
           </div>
