@@ -12,6 +12,7 @@ if (user) {
     response.json({ user, rutHash: hash })
 }
 
+Se integró la solución tal como tal como se presenta, pero dividiendo rut en run y dv, y utilizando run para el hashing
 
 Prompt: is this node syntax correct?
 scoreRouter.get('/:run/:dv', async(request, response) => {
@@ -46,6 +47,8 @@ scoreRouter.get('/:run/:dv', async (request, response) => {
   }
 })
 
+Se integró la solución tal como tal como se presenta
+
 Prompt: I want this hash to be a number between 0 and 100
 const score = crypto.createHash('sha256').update(user.run).digest('hex')
 
@@ -53,3 +56,5 @@ Respuesta:
 const hash = crypto.createHash('sha256').update(user.run).digest('hex')
 const numericHash = parseInt(hash.slice(0, 8), 16) // convert first 8 characters to a number
 const score = numericHash % 101 // gives a number from 0 to 100
+
+Se integró la solución tal como tal como se presenta
