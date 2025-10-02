@@ -18,7 +18,10 @@ import { ThemeProvider, createTheme } from '@mui/material/styles'
 const App = () => {
   const dispatch = useDispatch()
 
-  const [mode, setMode] = useState('light')
+  const [mode, setMode] = useState(() => {
+    const savedMode = localStorage.getItem('Mode');
+    return savedMode ? JSON.parse(savedMode) : 'light'
+  })
 
   const theme = useMemo(
     () =>
