@@ -1,4 +1,7 @@
 import { useSelector } from 'react-redux'
+import {
+  Alert
+} from '@mui/material'
 
 const ErrorNotification = () => {
   const errorNotification = useSelector(state => state.errorNotification)
@@ -6,9 +9,7 @@ const ErrorNotification = () => {
     return null
   }
   return (
-    <div className="error">
-      {errorNotification}
-    </div>
+    <Alert severity="error">{errorNotification}</Alert>
   )
 }
 
